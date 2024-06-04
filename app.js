@@ -1,4 +1,4 @@
-import { debounce, removeLoader, isRemoved, truncate } from "./utils.js";
+import { debounce, isRemoved, removeLoader } from "./utils.js";
 
 const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=5`;
 const API_URL = `https://newsapi.org/v2/everything`;
@@ -27,10 +27,11 @@ const cloudinaryImages = [
   "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727127/photo-1714926311975-85300ee0a85a_fzcehh.jpg",
 ];
 
-
 async function fetchNews(query = "") {
   try {
-    const url = query ? `${API_URL}?q=${encodeURIComponent(query)}` : BASE_URL;
+    const url = query
+      ? `${API_URL}?q=${encodeURIComponent(query)}&pageSize=6`
+      : BASE_URL;
     const response = await fetch(url, options);
     const data = await response.json();
     removeLoader();
@@ -44,7 +45,7 @@ async function fetchNews(query = "") {
   }
 }
 
-//fetch headlines 
+//fetch headlines
 async function fetchHeadlines() {
   try {
     const response = await fetch(`${HEADLINES_URL}`, options);
@@ -72,8 +73,6 @@ function displayHeadlines(news) {
   });
 }
 
-
-
 function displayNews(news) {
   newsList.innerHTML = "";
   news.forEach((article) => {
@@ -94,9 +93,9 @@ function displayNews(news) {
           </div>
       `;
 
-      const featuredItem = document.createElement("div");
-      featuredItem.classList.add("featured-item");
-      featuredItem.innerHTML = `
+    const featuredItem = document.createElement("div");
+    featuredItem.classList.add("featured-item");
+    featuredItem.innerHTML = `
           <img crossOrigin="anonymous"  src="${randomImage}" alt="${article.title}" class="news-image
           " />
           <div class="news-content">
@@ -115,7 +114,6 @@ function displayNews(news) {
   });
 }
 
-
 const debouncedSearch = debounce((query) => {
   console.log(query);
   fetchNews(query);
@@ -125,9 +123,6 @@ searchInput.addEventListener("input", (event) => {
   const query = searchInput.value.toLowerCase();
   debouncedSearch(query);
 });
-
-
-
 
 // Initial fetch
 fetchNews();
