@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checklearn FE Main Stage I Assessment  </title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checklearn FE Main Stage I Assessment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="index.html">NewsHub</a>
 
-  <header>
-    <div class="logo-search">
-    <a class="logo" href="index.html">NewHub</a>
-    <input type="text" name="" id="search" class="search-bar">
-  </div>
+      <nav>
+        <input
+          type="text"
+          name=""
+          id="search"
+          class="search-bar"
+          placeholder="search news"
+        />
+      </nav>
+    </header>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-<main>
-  <div class="section" id="newsList">
-
-  </div>
-
-</main>
-
-</body>
-<script src="/app.js" type="module"></script>
+    <main>
+      <div class="section" id="newsList">
+        <div class="loader-container">
+          <span class="loader"></span>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="/app.js" type="module"></script>
 </html>

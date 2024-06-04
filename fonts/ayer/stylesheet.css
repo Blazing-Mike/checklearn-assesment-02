@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-SemiBoldItalic.eot');
+    src: local('Ayer SemiBold Italic'), local('Ayer-SemiBoldItalic'),
+        url('Ayer-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-SemiBoldItalic.woff2') format('woff2'),
+        url('Ayer-SemiBoldItalic.woff') format('woff'),
+        url('Ayer-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-SemiBold.eot');
+    src: local('Ayer SemiBold'), local('Ayer-SemiBold'),
+        url('Ayer-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-SemiBold.woff2') format('woff2'),
+        url('Ayer-SemiBold.woff') format('woff'),
+        url('Ayer-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-Bold.eot');
+    src: local('Ayer Bold'), local('Ayer-Bold'),
+        url('Ayer-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-Bold.woff2') format('woff2'),
+        url('Ayer-Bold.woff') format('woff'),
+        url('Ayer-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-RegularItalic.eot');
+    src: local('Ayer Regular Italic'), local('Ayer-RegularItalic'),
+        url('Ayer-RegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-RegularItalic.woff2') format('woff2'),
+        url('Ayer-RegularItalic.woff') format('woff'),
+        url('Ayer-RegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-Regular.eot');
+    src: local('Ayer Regular'), local('Ayer-Regular'),
+        url('Ayer-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-Regular.woff2') format('woff2'),
+        url('Ayer-Regular.woff') format('woff'),
+        url('Ayer-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-Medium.eot');
+    src: local('Ayer Medium'), local('Ayer-Medium'),
+        url('Ayer-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-Medium.woff2') format('woff2'),
+        url('Ayer-Medium.woff') format('woff'),
+        url('Ayer-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-BoldItalic.eot');
+    src: local('Ayer Bold Italic'), local('Ayer-BoldItalic'),
+        url('Ayer-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-BoldItalic.woff2') format('woff2'),
+        url('Ayer-BoldItalic.woff') format('woff'),
+        url('Ayer-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ayer';
+    src: url('Ayer-MediumItalic.eot');
+    src: local('Ayer Medium Italic'), local('Ayer-MediumItalic'),
+        url('Ayer-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ayer-MediumItalic.woff2') format('woff2'),
+        url('Ayer-MediumItalic.woff') format('woff'),
+        url('Ayer-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+

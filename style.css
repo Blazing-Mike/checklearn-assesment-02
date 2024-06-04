@@ -1,12 +1,174 @@
+:root {
+  font-family: serif, Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+
+  --light-blue: #b4c8de;
+  --red: #ec0000;
+  --black: #000;
+  --secondary-text: #243a54;
+  --inter: "Inter", sans-serif;
+  --ayer: "Ayer", serif;
+  --cambon: "Cambon", serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* border: 1px solid red; */
+  font-size: 16px;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
+}
+
+/* font */
+
+@font-face {
+  font-family: "Ayer";
+  src: url("/fonts/ayer/Ayer-Regular.eot");
+  src:
+    local("Ayer Regular"),
+    local("Ayer-Regular"),
+    url("/fonts/ayer/Ayer-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/ayer/Ayer-Regular.woff2") format("woff2"),
+    url("/fonts/ayer/Ayer-Regular.woff") format("woff"),
+    url("/fonts/ayer/Ayer-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-Light.eot");
+  src:
+    local("Cambon Light"),
+    local("Cambon-Light"),
+    url("/fonts/cambon/Cambon-Light.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-Light.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-Light.woff") format("woff"),
+    url("/fonts/cambon/Cambon-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-LightItalic.eot");
+  src:
+    local("Cambon Light Italic"),
+    local("Cambon-LightItalic"),
+    url("/fonts/cambon/Cambon-LightItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-LightItalic.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-LightItalic.woff") format("woff"),
+    url("/fonts/cambon/Cambon-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-Regular.eot");
+  src:
+    local("Cambon Regular"),
+    local("Cambon-Regular"),
+    url("/fonts/cambon/Cambon-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-Regular.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-Regular.woff") format("woff"),
+    url("/fonts/cambon/Cambon-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-Medium.eot");
+  src:
+    local("Cambon Medium"),
+    local("Cambon-Medium"),
+    url("/fonts/cambon/Cambon-Medium.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-Medium.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-Medium.woff") format("woff"),
+    url("/fonts/cambon/Cambon-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-Bold.eot");
+  src:
+    local("Cambon Bold"),
+    local("Cambon-Bold"),
+    url("/fonts/cambon/Cambon-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-Bold.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-Bold.woff") format("woff"),
+    url("/fonts/cambon/Cambon-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cambon";
+  src: url("/fonts/cambon/Cambon-SemiBold.eot");
+  src:
+    local("Cambon SemiBold"),
+    local("Cambon-SemiBold"),
+    url("/fonts/cambon/Cambon-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/cambon/Cambon-SemiBold.woff2") format("woff2"),
+    url("/fonts/cambon/Cambon-SemiBold.woff") format("woff"),
+    url("/fonts/cambon/Cambon-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: white;
+  font-size: 16px;
 }
 
 header {
@@ -17,57 +179,116 @@ header {
   background: #f1f0eb;
 }
 
-
-.logo-search{
+.logo-search {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.logo{
-  font-size: 1.5rem;
-  font-weight: bold;
+.logo {
+  color: black;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: var(--cambon);
+}
+
+.search-bar {
+  align-items: center;
+  gap: 10px;
+  width: 23rem;
+  height: 3rem;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
 }
 
 nav ul {
   display: flex;
-  
+
   align-items: start;
   list-style: none;
   gap: 15px;
 }
 
-#newsList{
+#newsList {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
   margin: 1rem 0;
-
 }
 
-.news-item{
+.news-item {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
-  background: #f1f0eb;
   width: 100%;
+}
+.news-content {
+  padding: 0.5rem 0;
+}
+
+.news-content .title {
+  font-family: var(--cambon);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.news-content .author-date {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin: 10px 5px;
+  font-style: italic;
+  color: #777;
+}
+
+.news-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.read-more{
+  color: var(--red);
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-family: var(--cambon);
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
-  .news-item{
+  .news-item {
     width: 30%;
   }
 }
 
-.search-bar {
+.loader-container {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 5px;
-  gap: 10px;
-  width: 18rem;
-  height: 2.5rem;
-  border-radius: 20px;
-  outline: none;
-  border: none;
+  height: 100vh;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #000;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
