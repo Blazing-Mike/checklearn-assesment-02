@@ -1,7 +1,8 @@
 import { debounce, removeLoader, isRemoved, truncate } from "./utils.js";
 
-const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=15`;
+const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=5`;
 const API_URL = `https://newsapi.org/v2/everything`;
+const HEADLINES_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=5`;
 export const options = {
   method: "GET",
   headers: {
@@ -9,6 +10,7 @@ export const options = {
   },
 };
 const newsList = document.getElementById("newsList");
+const featuredList = document.getElementById("featuredList");
 const main = document.querySelector("main");
 
 const searchInput = document.getElementById("search");
@@ -42,6 +44,36 @@ async function fetchNews(query = "") {
   }
 }
 
+//fetch headlines 
+async function fetchHeadlines() {
+  try {
+    const response = await fetch(`${HEADLINES_URL}`, options);
+    const data = await response.json();
+    const filteredNews = data?.articles.filter(
+      (article) => !isRemoved(article)
+    );
+    displayHeadlines(filteredNews);
+  } catch (error) {
+    console.error("Error fetching headlines:", error);
+  }
+}
+
+function displayHeadlines(news) {
+  const headlines = document.querySelector(".headlines");
+  news.forEach((article) => {
+    const headline = document.createElement("div");
+    headline.classList.add("headline");
+    headline.innerHTML = `
+          <a href="${article.url}" target="_blank" class="headline-link">
+              <p class="headline-title">${article.title}</p>
+          </a>
+      `;
+    headlines.appendChild(headline);
+  });
+}
+
+
+
 function displayNews(news) {
   newsList.innerHTML = "";
   news.forEach((article) => {
@@ -61,9 +93,28 @@ function displayNews(news) {
           <a href="${article.url}" target="_blank" class="read-more">Read more</a>
           </div>
       `;
+
+      const featuredItem = document.createElement("div");
+      featuredItem.classList.add("featured-item");
+      featuredItem.innerHTML = `
+          <img crossOrigin="anonymous"  src="${randomImage}" alt="${article.title}" class="news-image
+          " />
+          <div class="news-content">
+          <a href="${article.url}" target="_blank" class="">
+          <h2 class="title">${article.title}</h2> </a>
+          <div class="author-date">
+              <span class="author"> by ${article.author || "Unknown author"} </span>
+              <span class="date">${new Date(article.publishedAt).toDateString()}</span>
+          </div>
+          <a href="${article.url}" target="_blank" class="read-more">Read more</a>
+          </div>
+      `;
+
     newsList.appendChild(newsItem);
+    featuredList.appendChild(featuredItem);
   });
 }
+
 
 const debouncedSearch = debounce((query) => {
   console.log(query);
@@ -75,5 +126,9 @@ searchInput.addEventListener("input", (event) => {
   debouncedSearch(query);
 });
 
+
+
+
 // Initial fetch
 fetchNews();
+fetchHeadlines();
