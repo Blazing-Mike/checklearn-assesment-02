@@ -361,12 +361,20 @@ footer a {
 
 @media (min-width: 768px) {
   #newsList {
-    width: 67%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
     gap: 2rem 1rem;
   }
 
+  .news-container {
+    width: 67%;
+  }
+
+  .news-container .news-heading{
+    font-size: 3rem;
+    font-family: var(--ayer);
+    font-weight: 500;
+  }
   .headlines {
     width: 27%;
     align-self: flex-start;
@@ -429,12 +437,16 @@ footer a {
   max-height: 40rem;
   margin: 1rem auto;
 }
+.highlight-news .source {
+  color: var(--red);
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
 @media (min-width: 768px) {
   .highlight-news {
-    margin: 1rem 10%;
+    margin: 3rem 10%;
   }
-
 
   .highlight-image {
     width: 80%;

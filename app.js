@@ -128,6 +128,7 @@ function displayHighlightNews(news) {
   const highlightItem = document.createElement("div");
   highlightItem.classList.add("highlight-item");
   highlightItem.innerHTML = `
+  <span class="source">${news.source.name}</span>
   <h2 class="title">${news.title}</h2> </a>
           <img crossOrigin="anonymous"  src="${randomImage}" alt="${news.title}" class="highlight-image
           " />
