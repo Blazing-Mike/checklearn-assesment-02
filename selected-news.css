@@ -38,7 +38,8 @@ main {
   max-height: 40rem;
 }
 
-.content{
+.content {
   margin: 2rem 10%;
   font-family: var(--cambon);
+  font-size: 1.1rem;
 }
