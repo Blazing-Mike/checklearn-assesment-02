@@ -166,7 +166,6 @@ a {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
   background: white;
   font-size: 16px;
 }
@@ -192,16 +191,22 @@ header {
   font-family: var(--cambon);
 }
 
+.logo .small {
+  font-size: 2rem;
+  color: var(--red);
+}
+
 .search-bar {
   align-items: center;
   gap: 10px;
   width: 23rem;
   height: 3rem;
-  border-radius: 30px;
+  border-radius: 35px;
   outline: none;
   border: none;
-  padding: 10px;
+  padding: 0 0 4px 15px;
   font-size: 1rem;
+  font-family: var(--cambon);
 }
 
 nav ul {
@@ -288,6 +293,7 @@ footer {
   background: var(--secondary-text);
   color: white;
   padding: 1rem 3rem;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -340,20 +346,21 @@ footer {
   justify-content: center;
 }
 
-.featured{
+.featured {
   margin: 3rem;
 }
 
-.featured-news{
+.featured-news {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
   gap: 1rem;
 }
-
 
 .featured h2 {
   font-size: 3rem;
   text-transform: uppercase;
   font-family: var(--ayer);
-  margin: 10px ;
+  margin: 10px;
 }
+
+
