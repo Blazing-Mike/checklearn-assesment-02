@@ -1,6 +1,6 @@
 import { debounce, isRemoved, removeLoader } from "./utils.js";
 
-const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=6`;
+const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=5`;
 const API_URL = `https://newsapi.org/v2/everything`;
 const HEADLINES_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=6`;
 export const options = {

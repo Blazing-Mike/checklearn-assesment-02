@@ -298,6 +298,11 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+footer a{
+  color: white;
+  font-weight: 600;
 }
 
 .headlines {
