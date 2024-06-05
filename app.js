@@ -1,8 +1,15 @@
-import { debounce, isRemoved, removeLoader } from "./utils.js";
+import {
+  debounce,
+  displayError,
+  isRemoved,
+  randomImage,
+  removeLoader,
+} from "./utils.js";
 
 const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=5`;
 const API_URL = `https://newsapi.org/v2/everything`;
 const HEADLINES_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=6`;
+const SOURCE_URL = `https://newsapi.org/v2/top-headlines/sources`;
 export const options = {
   method: "GET",
   headers: {
@@ -25,9 +32,6 @@ const cloudinaryImages = [
   "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727127/photo-1714926311975-85300ee0a85a_fzcehh.jpg",
 ];
 
-
-
-
 async function fetchNews(query = "") {
   try {
     const url = query
@@ -44,6 +48,7 @@ async function fetchNews(query = "") {
   } catch (error) {
     console.error("Error fetching news:", error);
     removeLoader();
+    displayError("Failed to fetch news. Please try again later.");
   }
 }
 
@@ -56,6 +61,7 @@ async function fetchHeadlines() {
       (article) => !isRemoved(article)
     );
     displayHeadlines(filteredNews);
+    displayHighlightNews(filteredNews[0]);
   } catch (error) {
     console.error("Error fetching headlines:", error);
   }
@@ -63,6 +69,10 @@ async function fetchHeadlines() {
 
 function displayHeadlines(news) {
   const headlines = document.querySelector(".headlines");
+  const smallImage = document.createElement("img");
+  smallImage.src = randomImage;
+  smallImage.classList.add("small-image");
+  headlines.appendChild(smallImage);
   news.forEach((article) => {
     const headline = document.createElement("div");
     headline.classList.add("headline");
@@ -73,6 +83,7 @@ function displayHeadlines(news) {
             &date=${encodeURIComponent(article.publishedAt)}
             &image=${encodeURIComponent(article.urlToImage)}
             &content=${encodeURIComponent(article.content)}" target="_blank" class="headline-link">
+            
                 <p class="headline-title">${article.title}</p>
             </a>
         `;
@@ -84,7 +95,7 @@ function displayNews(news) {
   newsList.innerHTML = "";
   news.forEach((article) => {
     const randomImage =
-  cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
+      cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
     newsItem.innerHTML = `
@@ -110,12 +121,26 @@ function displayNews(news) {
   });
 }
 
+function displayHighlightNews(news) {
+  const highlightNews = document.querySelector(".highlight-news");
+  const randomImage =
+    cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
+  const highlightItem = document.createElement("div");
+  highlightItem.classList.add("highlight-item");
+  highlightItem.innerHTML = `
+  <h2 class="title">${news.title}</h2> </a>
+          <img crossOrigin="anonymous"  src="${randomImage}" alt="${news.title}" class="highlight-image
+          " />
+      `;
+  highlightNews.appendChild(highlightItem);
+}
+
 function displayFeatured(news) {
   featuredList.innerHTML = "";
-  const formatNews = news.slice(0, 6);
+  const formatNews = news.slice(0, 3);
   formatNews.forEach((article) => {
     const randomImage =
-  cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
+      cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
     const featuredItem = document.createElement("div");
     featuredItem.classList.add("featured-item");
     featuredItem.innerHTML = `
@@ -153,3 +178,4 @@ searchInput.addEventListener("input", (event) => {
 // Initial fetch
 fetchNews();
 fetchHeadlines();
+displayHighlightNews();
