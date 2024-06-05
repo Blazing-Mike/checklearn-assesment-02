@@ -45,6 +45,7 @@ async function fetchNews(query = "") {
     );
     displayNews(filteredNews);
     displayFeatured(filteredNews);
+    displayHighlightNews(filteredNews[0]);
   } catch (error) {
     console.error("Error fetching news:", error);
     removeLoader();
@@ -61,7 +62,6 @@ async function fetchHeadlines() {
       (article) => !isRemoved(article)
     );
     displayHeadlines(filteredNews);
-    displayHighlightNews(filteredNews[0]);
   } catch (error) {
     console.error("Error fetching headlines:", error);
   }
@@ -123,6 +123,7 @@ function displayNews(news) {
 
 function displayHighlightNews(news) {
   const highlightNews = document.querySelector(".highlight-news");
+highlightNews.innerHTML = "";
   const randomImage =
     cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
   const highlightItem = document.createElement("div");
