@@ -1,4 +1,4 @@
-import { debounce, isRemoved, randomImage, removeLoader } from "./utils.js";
+import { debounce, isRemoved, removeLoader } from "./utils.js";
 
 const BASE_URL = `https://newsapi.org/v2/everything?q=design&pageSize=6`;
 const API_URL = `https://newsapi.org/v2/everything`;
@@ -12,6 +12,21 @@ export const options = {
 const newsList = document.getElementById("newsList");
 
 const searchInput = document.getElementById("search");
+
+const cloudinaryImages = [
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727405/photo-1667125095636-dce94dcbdd96_vmtlnt.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727345/photo-1713124849883-9bbb982de639_b6oxi2.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727321/photo-1705909773420-8d7af2a343f9_en7zzz.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727226/photo-1650893843097-e32411fda3dd_tzfehw.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727197/photo-1709305317887-383781f1c217_wbmuz2.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727182/photo-1710942499889-71f233dae342_tetrgo.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727167/photo-1710937737232-7f0805d61525_jbwr78.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727151/photo-1710938134119-a6977c5c95f2_co4j32.jpg",
+  "https://res.cloudinary.com/dld9w13tr/image/upload/v1715727127/photo-1714926311975-85300ee0a85a_fzcehh.jpg",
+];
+
+
+
 
 async function fetchNews(query = "") {
   try {
@@ -68,6 +83,8 @@ function displayHeadlines(news) {
 function displayNews(news) {
   newsList.innerHTML = "";
   news.forEach((article) => {
+    const randomImage =
+  cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
     const newsItem = document.createElement("div");
     newsItem.classList.add("news-item");
     newsItem.innerHTML = `
@@ -97,6 +114,8 @@ function displayFeatured(news) {
   featuredList.innerHTML = "";
   const formatNews = news.slice(0, 6);
   formatNews.forEach((article) => {
+    const randomImage =
+  cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
     const featuredItem = document.createElement("div");
     featuredItem.classList.add("featured-item");
     featuredItem.innerHTML = `
