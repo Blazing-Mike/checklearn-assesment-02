@@ -13,12 +13,9 @@ const HEADLINES_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=
 const SOURCE_URL = `https://newsapi.org/v2/top-headlines/sources`;
 export const options = {
   method: "GET",
+  'mode': 'cors',
   headers: {
     "X-Api-Key": "363c2ee3b5cd4d67920bd37d68478583",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, X-Api-Key",
-
   },
 };
 const newsList = document.getElementById("newsList");
@@ -78,11 +75,13 @@ async function fetchHeadlines() {
 //fetch sources
 async function fetchSources(query = "") {
   try {
-    const url = query ? `${SOURCE_URL}?category=${encodeURIComponent(query)}` : SOURCE_URL;
+    const url = query
+      ? `${SOURCE_URL}?category=${encodeURIComponent(query)}`
+      : SOURCE_URL;
     const response = await fetch(url, options);
     const data = await response.json();
     displaySources(data.sources);
-    removeLoader()
+    removeLoader();
   } catch (error) {
     console.error("Error fetching sources:", error);
   }
@@ -221,8 +220,6 @@ searchInput.addEventListener("input", (event) => {
   }
   debouncedSearch(query);
 });
-
-
 
 for (const btn of filterBtn) {
   btn.addEventListener("click", () => {
