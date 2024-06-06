@@ -3,7 +3,7 @@
 # News Blog Application
 
 ## Introduction
-This project is a front-end application designed to enable users to view news from various websites using the News API. The application provides a user-friendly interface with two main pages: one for displaying all news and another for selected news. Additionally, it incorporates a search feature. 
+This project is a front-end application designed to enable users to view news from various websites using the News API. The application provides a user-friendly interface with two main pages: one for displaying all news and another for selected news. 
 
 ## Features
 - **Two Pages**: 
@@ -14,8 +14,8 @@ This project is a front-end application designed to enable users to view news fr
 
 
 ## Technologies Used
-- **HTML5**: Structure of the web pages.
-- **CSS3**: Styling of the web pages.
+- **HTML**: Structure of the web pages.
+- **CSS**: Styling of the web pages.
 - **JavaScript**: Functionality and interactivity of the application.
 - **News API**: Fetching news data from various sources. https://newsapi.org/docs
 
@@ -26,7 +26,10 @@ This project is a front-end application designed to enable users to view news fr
 ├── index.html
 ├── selected-news.html
 ├── styles.css
+|── selected-news.css
+|── selected-news.js
 ├── app.js
+|── utils.js
 └── README.md
 ```
 
@@ -43,7 +46,7 @@ This project is a front-end application designed to enable users to view news fr
    ```
 2. **Navigate to the Project Directory**
    ```bash
-   cd news-blog-app
+   cd checklearn-assesment-02
    ```
 3. **Open `index.html` in Your Browser**
    - You can simply double-click on the `index.html` file or open it using your preferred web server setup.
