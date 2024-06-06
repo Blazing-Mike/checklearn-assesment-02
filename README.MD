@@ -17,7 +17,7 @@ This project is a front-end application designed to enable users to view news fr
 - **HTML5**: Structure of the web pages.
 - **CSS3**: Styling of the web pages.
 - **JavaScript**: Functionality and interactivity of the application.
-- **News API**: Fetching news data from various sources.
+- **News API**: Fetching news data from various sources. https://newsapi.org/docs
 
 ## Project Structure
 ```
@@ -39,7 +39,7 @@ This project is a front-end application designed to enable users to view news fr
 ## How to Run the App
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/news-blog-app.git
+   git clone https://github.com/Blazing-Mike/checklearn-assesment-02.git
    ```
 2. **Navigate to the Project Directory**
    ```bash
