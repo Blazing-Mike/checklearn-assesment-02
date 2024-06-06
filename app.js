@@ -15,6 +15,10 @@ export const options = {
   method: "GET",
   headers: {
     "X-Api-Key": "363c2ee3b5cd4d67920bd37d68478583",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+
   },
 };
 const newsList = document.getElementById("newsList");
