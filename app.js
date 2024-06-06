@@ -13,7 +13,6 @@ const HEADLINES_URL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=
 const SOURCE_URL = `https://newsapi.org/v2/top-headlines/sources`;
 export const options = {
   method: "GET",
-  'mode': 'cors',
   headers: {
     "X-Api-Key": "363c2ee3b5cd4d67920bd37d68478583",
   },
