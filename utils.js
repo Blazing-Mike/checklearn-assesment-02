@@ -1,10 +1,23 @@
-const loader = document.querySelector(".loader");
-const loaderContainer = document.querySelector(".loader-container");
+const loader = document.querySelectorAll(".loader");
+const loaderContainer = document.querySelectorAll(".loader-container");
 const main = document.querySelector("main");
 
 const removeLoader = () => {
-  loader.style.display = "none";
-  loaderContainer.style.display = "none";
+  for (const element of loader) {
+    element.style.display = "none";
+  }
+  for (const element of loaderContainer) {
+    element.style.display = "none";
+  }
+};
+
+const addLoader = () => {
+  for (const element of loader) {
+    element.style.display = "block";
+  }
+  for (const element of loaderContainer) {
+    element.style.display = "block";
+  }
 };
 
 const debounce = (callback, wait) => {
@@ -56,6 +69,7 @@ function displayError(message) {
 }
 
 export {
+  addLoader,
   debounce,
   displayError,
   isRemoved,

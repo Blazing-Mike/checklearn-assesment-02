@@ -1,4 +1,5 @@
 import {
+  addLoader,
   debounce,
   displayError,
   isRemoved,
@@ -17,6 +18,9 @@ export const options = {
   },
 };
 const newsList = document.getElementById("newsList");
+
+const businessBtn = document.getElementById("business");
+const filterBtn = document.querySelectorAll(".filter-btn");
 
 const searchInput = document.getElementById("search");
 
@@ -64,6 +68,19 @@ async function fetchHeadlines() {
     displayHeadlines(filteredNews);
   } catch (error) {
     console.error("Error fetching headlines:", error);
+  }
+}
+
+//fetch sources
+async function fetchSources(query = "") {
+  try {
+    const url = query ? `${SOURCE_URL}?category=${encodeURIComponent(query)}` : SOURCE_URL;
+    const response = await fetch(url, options);
+    const data = await response.json();
+    displaySources(data.sources);
+    removeLoader()
+  } catch (error) {
+    console.error("Error fetching sources:", error);
   }
 }
 
@@ -123,15 +140,15 @@ function displayNews(news) {
 
 function displayHighlightNews(news) {
   const highlightNews = document.querySelector(".highlight-news");
-highlightNews.innerHTML = "";
+  highlightNews.innerHTML = "";
   const randomImage =
     cloudinaryImages[Math.floor(Math.random() * cloudinaryImages.length)];
   const highlightItem = document.createElement("div");
   highlightItem.classList.add("highlight-item");
   highlightItem.innerHTML = `
-  <span class="source">${news.source.name}</span>
-  <h2 class="title">${news.title}</h2> </a>
-          <img crossOrigin="anonymous"  src="${randomImage}" alt="${news.title}" class="highlight-image
+  <span class="source">${news?.source.name}</span>
+  <h2 class="title">${news?.title}</h2> </a>
+          <img crossOrigin="anonymous"  src="${randomImage}" alt="${news?.title}" class="highlight-image
           " />
       `;
   highlightNews.appendChild(highlightItem);
@@ -149,7 +166,13 @@ function displayFeatured(news) {
           <img crossOrigin="anonymous"  src="${randomImage}" alt="${article.title}" class="news-image
           " />
           <div class="news-content">
-          <a href="${article.url}" target="_blank" class="">
+          
+          <a href="selected-news.html?title=${encodeURIComponent(article.title)}
+          &description=${encodeURIComponent(article.description)}
+          &author=${encodeURIComponent(article.author)}
+          &date=${encodeURIComponent(article.publishedAt)}
+          &image=${encodeURIComponent(article.urlToImage)}
+          &content=${encodeURIComponent(article.content)}" class="">
           <h2 class="title">${article.title}</h2> </a>
           <div class="author-date">
               <span class="author"> by ${article.author || "Unknown author"} </span>
@@ -160,10 +183,24 @@ function displayFeatured(news) {
           &author=${encodeURIComponent(article.author)}
           &date=${encodeURIComponent(article.publishedAt)}
           &image=${encodeURIComponent(article.urlToImage)}
-          &content=${encodeURIComponent(article.content)}" target="_blank" class="read-more">Read more</a>
+          &content=${encodeURIComponent(article.content)}" class="read-more">Read more</a>
           </div>
       `;
     featuredList.appendChild(featuredItem);
+  });
+}
+
+function displaySources(sources) {
+  const sourcesList = document.querySelector("#sourceList");
+  sourcesList.innerHTML = "";
+  sources.forEach((source) => {
+    const sourceItem = document.createElement("div");
+    sourceItem.classList.add("source-item");
+    sourceItem.innerHTML = `
+            <h3 class="source-name">${source.name}</h3>
+            <button class="source-category">${source.category}</button>
+        `;
+    sourcesList.appendChild(sourceItem);
   });
 }
 
@@ -174,10 +211,24 @@ const debouncedSearch = debounce((query) => {
 
 searchInput.addEventListener("input", (event) => {
   const query = searchInput.value.toLowerCase();
+  if (query.length > 1) {
+    addLoader();
+    console.log("loading");
+  }
   debouncedSearch(query);
 });
+
+
+
+for (const btn of filterBtn) {
+  btn.addEventListener("click", () => {
+    addLoader();
+    fetchSources(btn.textContent.toLowerCase());
+  });
+}
 
 // Initial fetch
 fetchNews();
 fetchHeadlines();
+fetchSources();
 displayHighlightNews();

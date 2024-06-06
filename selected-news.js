@@ -25,6 +25,7 @@ function displayContent() {
 </div>
 </div>
   <img crossOrigin="anonymous"  src="${randomImage}" alt="${title}" class="blog-image" />
+   <p class="content">${description}</p>
   <p class="content">${content}</p>
                       `;
 
